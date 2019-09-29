@@ -6,19 +6,19 @@ import java.time.LocalDateTime;
 public class OutcomeOdd {
 	private BigDecimal value;
 	private LocalDateTime validFrom;
-	private LocalDateTime validUntil;	
+	private LocalDateTime validUntil;
 	private Outcome outcome;
-	
+
 	public OutcomeOdd() {
-		
+
 	}
-	
+
 	public OutcomeOdd(BigDecimal value, LocalDateTime validFrom, LocalDateTime validUntil) {
 		this.value = value;
 		this.validFrom = validFrom;
 		this.validUntil = validUntil;
 	}
-	
+
 	public BigDecimal getValue() {
 		return value;
 	}

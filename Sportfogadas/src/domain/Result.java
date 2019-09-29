@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Result {
 	private List<Outcome> winnerOutcomes;
-	
+
 	public Result() {
 		this.winnerOutcomes = new ArrayList<Outcome>();
 	}
-	
+
 	public void addWinnerOutcome(Outcome outcome) {
 		this.winnerOutcomes.add(outcome);
 	}

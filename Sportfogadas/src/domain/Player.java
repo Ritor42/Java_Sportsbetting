@@ -7,9 +7,9 @@ public class Player extends User {
 	private String name;
 	private Integer accountNumber;
 	private BigDecimal balance;
-	private LocalDate birth;	
+	private LocalDate birth;
 	private Currency currency;
-	
+
 	public String getName() {
 		return name;
 	}
