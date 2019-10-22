@@ -31,19 +31,34 @@ public class View implements IView {
 		try {
 			Player player = new Player();
 
-			System.out.println("What is your name?");
-			player.setName(scan.nextLine());
-
-			System.out.println("How much money do you have?");
-			player.setBalance(new BigDecimal(scan.nextLine()));
-
-			System.out.println("What is your currency? (HUF, EUR or USD)");
-			player.setCurrency(Currency.valueOf(scan.nextLine()));
+			player.setName(readNotEmptyString("What is your name?"));
+			player.setBalance(readNonNegativeBigDecimal("How much money do you have?"));
+			player.setCurrency(Currency.lookup(readNotEmptyString("What is your currency? (HUF, EUR or USD)")));
 
 			return player;
 		} catch (Exception e) {
 			return readPlayerData();
 		}
+	}
+	
+	private String readNotEmptyString(String message) {
+		String result = "";
+		System.out.println(message);
+		while((result = scan.nextLine()).isEmpty()) {
+			System.out.println(message);
+		}
+		
+		return result;
+	}
+	
+	private BigDecimal readNonNegativeBigDecimal(String message) {
+		BigDecimal result = new BigDecimal(-1);
+		BigDecimal zero = new BigDecimal(0);
+		
+		while((result = new BigDecimal(readNotEmptyString(message))).compareTo(zero) < 0) {
+		}
+		
+		return result;
 	}
 
 	@Override
