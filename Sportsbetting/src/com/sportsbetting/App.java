@@ -52,12 +52,11 @@ public class App {
 		
 			try {
 				bettingService.saveWager(wager);
+				view.printWagerSaved(wager);
+				view.printBalance(player);
 			} catch (NotEnoughBalanceException e) {
 				view.printNotEnoughBalance(player);
 			}
-		
-			view.printWagerSaved(wager);
-			view.printBalance(player);
 			
 			outcomeOdd = view.selectOutcomeOdd(bettingService.findAllSportEvents());
 		}
