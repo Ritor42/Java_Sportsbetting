@@ -28,17 +28,18 @@ public class View implements IView {
 
 	@Override
 	public Player readPlayerData() {
-		try {
 			Player player = new Player();
 
 			player.setName(readNotEmptyString("What is your name?"));
-			player.setBalance(readNonNegativeBigDecimal("How much money do you have?"));
-			player.setCurrency(Currency.lookup(readNotEmptyString("What is your currency? (HUF, EUR or USD)")));
+			player.setBalance(readGreaterOrEqualBigDecimal(BigDecimal.ZERO,"How much money do you have?"));
+			
+			Currency curr = null;
+			while((curr = Currency.lookup(readNotEmptyString("What is your currency? (HUF, EUR or USD)"))) == null) {
+			}
+			
+			player.setCurrency(curr);
 
 			return player;
-		} catch (Exception e) {
-			return readPlayerData();
-		}
 	}
 	
 	private String readNotEmptyString(String message) {
@@ -51,11 +52,28 @@ public class View implements IView {
 		return result;
 	}
 	
-	private BigDecimal readNonNegativeBigDecimal(String message) {
-		BigDecimal result = new BigDecimal(-1);
-		BigDecimal zero = new BigDecimal(0);
+	private BigDecimal readBigDecimal(String message) {
+		try
+		{
+			return new BigDecimal(readNotEmptyString(message));
+		} catch(Exception e) {
+			return readBigDecimal(message);
+		}
+	}
+	
+	private BigDecimal readGreaterBigDecimal(BigDecimal than, String message) {
+		BigDecimal result = than.subtract(new BigDecimal(1));
 		
-		while((result = new BigDecimal(readNotEmptyString(message))).compareTo(zero) < 0) {
+		while((result = readBigDecimal(message)).compareTo(than) < 1) {
+		}
+		
+		return result;
+	}
+	
+	private BigDecimal readGreaterOrEqualBigDecimal(BigDecimal than, String message) {
+		BigDecimal result = than.subtract(new BigDecimal(1));
+		
+		while((result = readBigDecimal(message)).compareTo(than) < 0) {
 		}
 		
 		return result;
@@ -63,12 +81,7 @@ public class View implements IView {
 
 	@Override
 	public BigDecimal readWagerAmount() {
-		try {
-			System.out.println("What amount do you wish to bet on it?");
-			return new BigDecimal(scan.nextLine());
-		} catch (Exception e) {
-			return readWagerAmount();
-		}
+			return readGreaterBigDecimal(BigDecimal.ZERO,"What amount do you wish to bet on it?");
 	}
 
 	@Override
