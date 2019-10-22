@@ -7,10 +7,10 @@ public class Bet {
 	private String description;
 	private SportEvent event;
 	private BetType type;
-	private List<Outcome> outcomes;
+	private List<Outcome> outcomes = new ArrayList<>();
 
 	public Bet() {
-		this.outcomes = new ArrayList<Outcome>();
+
 	}
 
 	public Bet(String description, BetType type, List<Outcome> outcomes) {
@@ -31,7 +31,7 @@ public class Bet {
 	}
 
 	public SportEvent getEvent() {
-		return event;
+		return this.event;
 	}
 
 	public void setEvent(SportEvent event) {
@@ -39,7 +39,7 @@ public class Bet {
 	}
 
 	public BetType getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(BetType type) {
@@ -47,18 +47,16 @@ public class Bet {
 	}
 
 	public List<Outcome> getOutcomes() {
-		return outcomes;
+		return this.outcomes;
 	}
 
 	public void addOutcome(Outcome outcome) {
-		if (this.outcomes.add(outcome)) {
-			outcome.setBet(this);
-		}
+		this.outcomes.add(outcome);
+		outcome.setBet(this);
 	}
 
 	public void removeOutcome(Outcome outcome) {
-		if (this.outcomes.remove(outcome)) {
-			outcome.setBet(null);
-		}
+		this.outcomes.remove(outcome);
+		outcome.setBet(null);
 	}
 }

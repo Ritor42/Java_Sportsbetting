@@ -20,7 +20,7 @@ public class OutcomeOdd {
 	}
 
 	public BigDecimal getValue() {
-		return value;
+		return this.value;
 	}
 
 	public void setValue(BigDecimal value) {
@@ -28,7 +28,7 @@ public class OutcomeOdd {
 	}
 
 	public LocalDateTime getValidFrom() {
-		return validFrom;
+		return this.validFrom;
 	}
 
 	public void setValidFrom(LocalDateTime validFrom) {
@@ -36,7 +36,7 @@ public class OutcomeOdd {
 	}
 
 	public LocalDateTime getValidUntil() {
-		return validUntil;
+		return this.validUntil;
 	}
 
 	public void setValidUntil(LocalDateTime validUntil) {
@@ -44,7 +44,7 @@ public class OutcomeOdd {
 	}
 
 	public Outcome getOutcome() {
-		return outcome;
+		return this.outcome;
 	}
 
 	public void setOutcome(Outcome outcome) {

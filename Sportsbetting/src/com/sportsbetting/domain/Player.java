@@ -10,8 +10,12 @@ public class Player extends User {
 	private LocalDate birth;
 	private Currency currency;
 
+	public Player() {
+
+	}
+
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -19,7 +23,7 @@ public class Player extends User {
 	}
 
 	public Integer getAccountNumber() {
-		return accountNumber;
+		return this.accountNumber;
 	}
 
 	public void setAccountNumber(Integer accountNumber) {
@@ -27,7 +31,7 @@ public class Player extends User {
 	}
 
 	public BigDecimal getBalance() {
-		return balance;
+		return this.balance;
 	}
 
 	public void setBalance(BigDecimal balance) {
@@ -35,7 +39,7 @@ public class Player extends User {
 	}
 
 	public LocalDate getBirth() {
-		return birth;
+		return this.birth;
 	}
 
 	public void setBirth(LocalDate birth) {
@@ -43,7 +47,7 @@ public class Player extends User {
 	}
 
 	public Currency getCurrency() {
-		return currency;
+		return this.currency;
 	}
 
 	public void setCurrency(Currency currency) {

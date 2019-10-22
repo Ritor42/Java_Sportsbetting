@@ -9,11 +9,7 @@ public abstract class SportEvent {
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	private Result result;
-	private List<Bet> bets;
-
-	public SportEvent() {
-		bets = new ArrayList<Bet>();
-	}
+	private List<Bet> bets = new ArrayList<>();
 
 	public SportEvent(String title, LocalDateTime startDate, LocalDateTime endDate, List<Bet> bets) {
 		this.title = title;
@@ -26,7 +22,7 @@ public abstract class SportEvent {
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(String title) {
@@ -34,7 +30,7 @@ public abstract class SportEvent {
 	}
 
 	public LocalDateTime getStartDate() {
-		return startDate;
+		return this.startDate;
 	}
 
 	public void setStartDate(LocalDateTime startDate) {
@@ -42,7 +38,7 @@ public abstract class SportEvent {
 	}
 
 	public LocalDateTime getEndDate() {
-		return endDate;
+		return this.endDate;
 	}
 
 	public void setEndDate(LocalDateTime endDate) {
@@ -50,7 +46,7 @@ public abstract class SportEvent {
 	}
 
 	public Result getResult() {
-		return result;
+		return this.result;
 	}
 
 	public void setResult(Result result) {
@@ -58,18 +54,16 @@ public abstract class SportEvent {
 	}
 
 	public List<Bet> getBets() {
-		return bets;
+		return this.bets;
 	}
 
 	public void addBet(Bet bet) {
-		if (this.bets.add(bet)) {
-			bet.setEvent(this);
-		}
+		this.bets.add(bet);
+		bet.setEvent(this);
 	}
 
 	public void removeBet(Bet bet) {
-		if (this.bets.remove(bet)) {
-			bet.setEvent(null);
-		}
+		this.bets.remove(bet);
+		bet.setEvent(null);
 	}
 }

@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
-	private List<Outcome> winnerOutcomes;
+	private List<Outcome> winnerOutcomes = new ArrayList<>();
 
 	public Result() {
-		this.winnerOutcomes = new ArrayList<Outcome>();
+
 	}
 
 	public void addWinnerOutcome(Outcome outcome) {
-		this.winnerOutcomes.add(outcome);
+		if (!this.winnerOutcomes.contains(outcome)) {
+			this.winnerOutcomes.add(outcome);
+		}
 	}
 
 	public void removeWinnerOutcome(Outcome outcome) {

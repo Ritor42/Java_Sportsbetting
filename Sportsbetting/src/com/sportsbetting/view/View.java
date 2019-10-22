@@ -15,10 +15,10 @@ import com.sportsbetting.domain.Wager;
 
 public class View implements IView {
 
-	private Scanner scan;
+	private Scanner scan = new Scanner(System.in);
 
 	public View() {
-		scan = new Scanner(System.in);
+
 	}
 
 	@Override
@@ -28,60 +28,59 @@ public class View implements IView {
 
 	@Override
 	public Player readPlayerData() {
-			Player player = new Player();
+		Player player = new Player();
 
-			player.setName(readNotEmptyString("What is your name?"));
-			player.setBalance(readGreaterOrEqualBigDecimal(BigDecimal.ZERO,"How much money do you have?"));
-			
-			Currency curr = null;
-			while((curr = Currency.lookup(readNotEmptyString("What is your currency? (HUF, EUR or USD)"))) == null) {
-			}
-			
-			player.setCurrency(curr);
+		player.setName(readNotEmptyString("What is your name?"));
+		player.setBalance(readGreaterOrEqualBigDecimal(BigDecimal.ZERO, "How much money do you have?"));
 
-			return player;
+		Currency curr = null;
+		while ((curr = Currency.lookup(readNotEmptyString("What is your currency? (HUF, EUR or USD)"))) == null) {
+		}
+
+		player.setCurrency(curr);
+
+		return player;
 	}
-	
+
 	private String readNotEmptyString(String message) {
 		String result = "";
 		System.out.println(message);
-		while((result = scan.nextLine()).isEmpty()) {
+		while ((result = scan.nextLine()).isEmpty()) {
 			System.out.println(message);
 		}
-		
+
 		return result;
 	}
-	
+
 	private BigDecimal readBigDecimal(String message) {
-		try
-		{
+		try {
 			return new BigDecimal(readNotEmptyString(message));
-		} catch(Exception e) {
+		} catch (Exception e) {
 			return readBigDecimal(message);
 		}
 	}
-	
+
 	private BigDecimal readGreaterBigDecimal(BigDecimal than, String message) {
 		BigDecimal result = than.subtract(new BigDecimal(1));
-		
-		while((result = readBigDecimal(message)).compareTo(than) < 1) {
+
+		while ((result = readBigDecimal(message)).compareTo(than) < 1) {
 		}
-		
+
 		return result;
 	}
-	
+
 	private BigDecimal readGreaterOrEqualBigDecimal(BigDecimal than, String message) {
 		BigDecimal result = than.subtract(new BigDecimal(1));
-		
-		while((result = readBigDecimal(message)).compareTo(than) < 0) {
+
+		while ((result = readBigDecimal(message)).compareTo(than) < 0) {
 		}
-		
+
 		return result;
 	}
 
 	@Override
 	public BigDecimal readWagerAmount() {
-			return readGreaterBigDecimal(BigDecimal.ZERO,"What amount do you wish to bet on it?");
+		return readGreaterBigDecimal(BigDecimal.ZERO, "What amount do you wish to bet on it?");
 	}
 
 	@Override

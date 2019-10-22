@@ -8,8 +8,8 @@ import com.sportsbetting.domain.OutcomeOdd;
 public class OutcomeOddBuilder {
 	private BigDecimal value;
 	private LocalDateTime validFrom;
-	private LocalDateTime validUntil;	
-	
+	private LocalDateTime validUntil;
+
 	public OutcomeOdd getOutcomeOdd() {
 		return new OutcomeOdd(this.value, this.validFrom, this.validUntil);
 	}

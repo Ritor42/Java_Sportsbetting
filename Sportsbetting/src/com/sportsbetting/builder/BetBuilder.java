@@ -10,15 +10,11 @@ import com.sportsbetting.domain.Outcome;
 public class BetBuilder {
 	private String description;
 	private BetType type;
-	private List<Outcome> outcomes;
-
-	public BetBuilder() {
-		this.outcomes = new ArrayList<Outcome>();
-	}
+	private List<Outcome> outcomes = new ArrayList<>();
 
 	public Bet getBet() {
 		Bet bet = new Bet(this.description, this.type, this.outcomes);
-		this.outcomes = new ArrayList<Outcome>();
+		this.outcomes = new ArrayList<>();
 		return bet;
 	}
 

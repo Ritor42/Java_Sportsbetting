@@ -8,10 +8,10 @@ import com.sportsbetting.exception.TimeOverlapException;
 public class Outcome {
 	private String description;
 	private Bet bet;
-	private List<OutcomeOdd> outcomeOdds;
+	private List<OutcomeOdd> outcomeOdds = new ArrayList<>();
 
 	public Outcome() {
-		this.outcomeOdds = new ArrayList<OutcomeOdd>();
+
 	}
 
 	public Outcome(String description, List<OutcomeOdd> outcomeOdds) {
@@ -23,7 +23,7 @@ public class Outcome {
 	}
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
@@ -31,7 +31,7 @@ public class Outcome {
 	}
 
 	public Bet getBet() {
-		return bet;
+		return this.bet;
 	}
 
 	public void setBet(Bet bet) {
@@ -39,31 +39,29 @@ public class Outcome {
 	}
 
 	public List<OutcomeOdd> getOutcomeOdds() {
-		return outcomeOdds;
+		return this.outcomeOdds;
 	}
 
 	public void addOutcomeOdd(OutcomeOdd outcomeOdd) throws TimeOverlapException {
 		for (OutcomeOdd odd : this.outcomeOdds) {
-			if ((odd.getValidFrom().isAfter(outcomeOdd.getValidFrom())
-					|| odd.getValidFrom().isEqual(outcomeOdd.getValidFrom()))
-					&& (odd.getValidFrom().isBefore(outcomeOdd.getValidUntil())
-							|| odd.getValidFrom().isEqual(outcomeOdd.getValidUntil()))
-					|| (odd.getValidFrom().isBefore(outcomeOdd.getValidFrom())
-							|| odd.getValidFrom().isEqual(outcomeOdd.getValidFrom()))
-							&& (odd.getValidUntil().isAfter(outcomeOdd.getValidFrom())
-									|| odd.getValidUntil().isEqual(outcomeOdd.getValidFrom()))) {
+
+			Boolean isAfterCollision = odd.getValidFrom().compareTo(outcomeOdd.getValidFrom()) > -1
+					&& odd.getValidFrom().compareTo(outcomeOdd.getValidUntil()) < 1;
+
+			Boolean isBeforeCollision = odd.getValidFrom().compareTo(outcomeOdd.getValidFrom()) < 1
+					&& odd.getValidUntil().compareTo(outcomeOdd.getValidFrom()) > -1;
+
+			if (isAfterCollision || isBeforeCollision) {
 				throw new TimeOverlapException();
 			}
 		}
 
-		if (this.outcomeOdds.add(outcomeOdd)) {
-			outcomeOdd.setOutcome(this);
-		}
+		this.outcomeOdds.add(outcomeOdd);
+		outcomeOdd.setOutcome(this);
 	}
 
 	public void removeOutcomeOdd(OutcomeOdd outcomeOdd) {
-		if (this.outcomeOdds.remove(outcomeOdd)) {
-			outcomeOdd.setOutcome(null);
-		}
+		this.outcomeOdds.remove(outcomeOdd);
+		outcomeOdd.setOutcome(null);
 	}
 }
