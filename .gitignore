@@ -53,3 +53,6 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
+sportsbettingapplicationmaven/.idea/
+sportsbettingapplicationmaven/sportsbetting-application-domain/target/
+sportsbettingapplicationmaven/sportsbetting-application-service/target/
