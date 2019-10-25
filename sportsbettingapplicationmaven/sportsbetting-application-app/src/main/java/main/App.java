@@ -1,3 +1,5 @@
+package main;
+
 import domain.OutcomeOdd;
 import domain.Player;
 import domain.Wager;
