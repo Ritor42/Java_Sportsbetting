@@ -44,7 +44,7 @@
     </build>
     <dependencies>
     <dependency>
-        <groupId>com.sportsbetting</groupId>
+        <groupId>com.example</groupId>
         <artifactId>sportsbetting-application-service</artifactId>
         <version>1.0-SNAPSHOT</version>
         <scope>compile</scope>
