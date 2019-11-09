@@ -5,20 +5,16 @@ import domain.*;
 import exception.CurrencyMismatchException;
 import exception.NotEnoughBalanceException;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 public class SportsBettingService implements ISportsBettingService {
-	private List<Wager> wagers = new ArrayList<>();
-	private List<Player> players = new ArrayList<>();
-	private List<SportEvent> events = new ArrayList<>();
-
 	private static Random rand = new Random();
 
 	public SportsBettingService() {
-		TestData.Generate(this.events);
+		TestData.Generate();
 	}
 
 	@Override
@@ -29,21 +25,21 @@ public class SportsBettingService implements ISportsBettingService {
 
 	@Override
 	public List<Wager> findAllWagers() {
-		return this.wagers;
+		return DbService.GetDbService().getWagers();
 	}
 
 	@Override
 	public List<SportEvent> findAllSportEvents() {
-		return this.events;
+		return DbService.GetDbService().getEvents();
 	}
 
 	@Override
 	public void calculateResults() throws CurrencyMismatchException {
-		for (SportEvent event : this.events) {
+		for (SportEvent event : DbService.GetDbService().getEvents()) {
 
 			Result result = new Result();
 
-			for (Wager wager : this.wagers) {
+			for (Wager wager : DbService.GetDbService().getWagers()) {
 				if (rand.nextBoolean()) {
 					OutcomeOdd odd = wager.getOutcomeOdd();
 					result.addWinnerOutcome(odd.getOutcome());
@@ -53,14 +49,19 @@ public class SportsBettingService implements ISportsBettingService {
 
 					if (wager.getCurrency() == player.getCurrency()) {
 						player.setBalance(player.getBalance().add(wager.getAmount().multiply(odd.getValue())));
-						wager.setProcessed(true);
+						DbService.GetDbService().Add(player);
 					} else {
 						throw new CurrencyMismatchException();
 					}
 				}
+				wager.setProcessed(true);
+				DbService.GetDbService().Add(wager);
 			}
 
 			event.setResult(result);
+
+			DbService.GetDbService().Add(result);
+			DbService.GetDbService().Add(event);
 		}
 	}
 
@@ -72,8 +73,10 @@ public class SportsBettingService implements ISportsBettingService {
 
 			if (player.getBalance().compareTo(wager.getAmount()) != -1) {
 				player.setBalance(player.getBalance().subtract(wager.getAmount()));
-				wager.setTimestampCreated(LocalDateTime.now());
-				this.wagers.add(wager);
+				wager.setTimestampCreated(new Date());
+
+				DbService.GetDbService().Add(player);
+				DbService.GetDbService().Add(wager);
 			} else {
 				throw new NotEnoughBalanceException();
 			}
@@ -85,7 +88,7 @@ public class SportsBettingService implements ISportsBettingService {
 	@Override
 	public void savePlayer(Player player) {
 		if (player != null) {
-			this.players.add(player);
+			DbService.GetDbService().Add(player);
 		} else {
 			throw new IllegalArgumentException();
 		}

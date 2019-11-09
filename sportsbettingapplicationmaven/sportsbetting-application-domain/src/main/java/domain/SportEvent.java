@@ -1,17 +1,32 @@
 package domain;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public abstract class SportEvent {
+@Entity
+public class SportEvent {
+	@Id
+	@GeneratedValue
+	private int id;
+
 	private String title;
-	private LocalDateTime startDate;
-	private LocalDateTime endDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date startDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date endDate;
+
+	@ManyToOne
 	private Result result;
+
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Bet> bets = new ArrayList<>();
 
-	public SportEvent(String title, LocalDateTime startDate, LocalDateTime endDate, List<Bet> bets) {
+	public SportEvent(String title, Date startDate, Date endDate, List<Bet> bets) {
 		this.title = title;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -21,6 +36,10 @@ public abstract class SportEvent {
 			bet.setEvent(this);
 	}
 
+	public int getId() { return this.id; }
+
+	public void setId(int id) { this.id = id; }
+
 	public String getTitle() {
 		return this.title;
 	}
@@ -29,19 +48,19 @@ public abstract class SportEvent {
 		this.title = title;
 	}
 
-	public LocalDateTime getStartDate() {
+	public Date getStartDate() {
 		return this.startDate;
 	}
 
-	public void setStartDate(LocalDateTime startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public LocalDateTime getEndDate() {
+	public Date getEndDate() {
 		return this.endDate;
 	}
 
-	public void setEndDate(LocalDateTime endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

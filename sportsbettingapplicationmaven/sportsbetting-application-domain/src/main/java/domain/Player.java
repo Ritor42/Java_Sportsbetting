@@ -1,13 +1,27 @@
 package domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
-public class Player extends User {
+@Entity
+public class Player {
+	@Id
+	@GeneratedValue
+	private int id;
+
+	private String email;
+	private String password;
+
 	private String name;
 	private Integer accountNumber;
 	private BigDecimal balance;
-	private LocalDate birth;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date birth;
+
+	@Enumerated(EnumType.STRING)
 	private Currency currency;
 
 	public Player() {
@@ -38,11 +52,11 @@ public class Player extends User {
 		this.balance = balance;
 	}
 
-	public LocalDate getBirth() {
+	public Date getBirth() {
 		return this.birth;
 	}
 
-	public void setBirth(LocalDate birth) {
+	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 
@@ -52,5 +66,23 @@ public class Player extends User {
 
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
+	}
+
+	public int getId() { return this.id; }
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

@@ -1,15 +1,31 @@
 package domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
+@Entity
 public class Wager {
+	@Id
+	@GeneratedValue
+	private int id;
+
 	private BigDecimal amount;
-	private LocalDateTime timestampCreated;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date timestampCreated;
+
 	private boolean processed;
 	private boolean win;
+
+	@ManyToOne
 	private Player player;
+
+	@ManyToOne
 	private OutcomeOdd odd;
+
+	@Enumerated(EnumType.STRING)
 	private Currency currency;
 
 	public Wager() {
@@ -24,11 +40,11 @@ public class Wager {
 		this.amount = amount;
 	}
 
-	public LocalDateTime getTimestampCreated() {
+	public Date getTimestampCreated() {
 		return this.timestampCreated;
 	}
 
-	public void setTimestampCreated(LocalDateTime timestampCreated) {
+	public void setTimestampCreated(Date timestampCreated) {
 		this.timestampCreated = timestampCreated;
 	}
 

@@ -1,17 +1,20 @@
 package main;
 
 import config.AppConfig;
+import config.JpaConfig;
 import domain.OutcomeOdd;
 import domain.Player;
 import domain.Wager;
 import exception.CurrencyMismatchException;
 import exception.NotEnoughBalanceException;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import service.ISportsBettingService;
-import service.SportsBettingService;
 import view.IView;
-import view.View;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 public class App {
 	private IView view;

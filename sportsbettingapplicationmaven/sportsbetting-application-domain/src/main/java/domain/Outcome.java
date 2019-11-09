@@ -2,12 +2,22 @@ package domain;
 
 import exception.TimeOverlapException;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Outcome {
+	@Id
+	@GeneratedValue
+	private int id;
+
 	private String description;
+
+	@ManyToOne
 	private Bet bet;
+
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<OutcomeOdd> outcomeOdds = new ArrayList<>();
 
 	public Outcome() {

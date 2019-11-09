@@ -4,11 +4,12 @@ import domain.OutcomeOdd;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class OutcomeOddBuilder {
 	private BigDecimal value;
-	private LocalDateTime validFrom;
-	private LocalDateTime validUntil;
+	private Date validFrom;
+	private Date validUntil;
 
 	public OutcomeOdd getOutcomeOdd() {
 		return new OutcomeOdd(this.value, this.validFrom, this.validUntil);
@@ -19,12 +20,12 @@ public class OutcomeOddBuilder {
 		return this;
 	}
 
-	public OutcomeOddBuilder setValidFrom(LocalDateTime validFrom) {
+	public OutcomeOddBuilder setValidFrom(Date validFrom) {
 		this.validFrom = validFrom;
 		return this;
 	}
 
-	public OutcomeOddBuilder setValidUntil(LocalDateTime validUntil) {
+	public OutcomeOddBuilder setValidUntil(Date validUntil) {
 		this.validUntil = validUntil;
 		return this;
 	}

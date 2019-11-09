@@ -1,12 +1,24 @@
 package domain;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Bet {
+	@Id
+	@GeneratedValue
+	private int id;
+
 	private String description;
+
+	@ManyToOne
 	private SportEvent event;
+
+	@Enumerated(EnumType.STRING)
 	private BetType type;
+
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Outcome> outcomes = new ArrayList<>();
 
 	public Bet() {

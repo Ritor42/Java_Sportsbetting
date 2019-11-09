@@ -1,19 +1,32 @@
 package domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
+@Entity
 public class OutcomeOdd {
+	@Id
+	@GeneratedValue
+	private int id;
+
 	private BigDecimal value;
-	private LocalDateTime validFrom;
-	private LocalDateTime validUntil;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date validFrom;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date validUntil;
+
+	@ManyToOne
 	private Outcome outcome;
 
 	public OutcomeOdd() {
 
 	}
 
-	public OutcomeOdd(BigDecimal value, LocalDateTime validFrom, LocalDateTime validUntil) {
+	public OutcomeOdd(BigDecimal value, Date validFrom, Date validUntil) {
 		this.value = value;
 		this.validFrom = validFrom;
 		this.validUntil = validUntil;
@@ -27,19 +40,19 @@ public class OutcomeOdd {
 		this.value = value;
 	}
 
-	public LocalDateTime getValidFrom() {
+	public Date getValidFrom() {
 		return this.validFrom;
 	}
 
-	public void setValidFrom(LocalDateTime validFrom) {
+	public void setValidFrom(Date validFrom) {
 		this.validFrom = validFrom;
 	}
 
-	public LocalDateTime getValidUntil() {
+	public Date getValidUntil() {
 		return this.validUntil;
 	}
 
-	public void setValidUntil(LocalDateTime validUntil) {
+	public void setValidUntil(Date validUntil) {
 		this.validUntil = validUntil;
 	}
 

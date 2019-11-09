@@ -6,28 +6,31 @@ import domain.SportEvent;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public abstract class SportEventBuilder {
+public class SportEventBuilder {
 	protected String title;
-	protected LocalDateTime startDate;
-	protected LocalDateTime endDate;
+	protected Date startDate;
+	protected Date endDate;
 	protected Result result;
 	protected List<Bet> bets = new ArrayList<>();
 
-	public abstract SportEvent getEvent();
+	public SportEvent getEvent() {
+		return new SportEvent(title, startDate, endDate, bets);
+	}
 
 	public SportEventBuilder setTitle(String title) {
 		this.title = title;
 		return this;
 	}
 
-	public SportEventBuilder setStartDate(LocalDateTime startDate) {
+	public SportEventBuilder setStartDate(Date startDate) {
 		this.startDate = startDate;
 		return this;
 	}
 
-	public SportEventBuilder setEndDate(LocalDateTime endDate) {
+	public SportEventBuilder setEndDate(Date endDate) {
 		this.endDate = endDate;
 		return this;
 	}

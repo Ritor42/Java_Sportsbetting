@@ -1,9 +1,16 @@
 package domain;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Result {
+	@Id
+	@GeneratedValue
+	private int id;
+
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Outcome> winnerOutcomes = new ArrayList<>();
 
 	public Result() {
