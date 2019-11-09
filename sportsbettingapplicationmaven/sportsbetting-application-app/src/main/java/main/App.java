@@ -1,10 +1,13 @@
 package main;
 
+import config.AppConfig;
 import domain.OutcomeOdd;
 import domain.Player;
 import domain.Wager;
 import exception.CurrencyMismatchException;
 import exception.NotEnoughBalanceException;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import service.ISportsBettingService;
 import service.SportsBettingService;
 import view.IView;
@@ -16,8 +19,10 @@ public class App {
 	private ISportsBettingService bettingService;
 
 	public static void main(String[] args) {
-		App app = new App(new SportsBettingService(), new View());
-		app.play();
+		try (ConfigurableApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class)) {
+			App app = appContext.getBean(App.class);
+			app.play();
+		}
 	}
 
 	public App(ISportsBettingService bettingService, IView view) {

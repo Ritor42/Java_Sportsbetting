@@ -1,0 +1,2 @@
+2019-11-09 01:03:51,229 INFO org.springframework.context.support.AbstractApplicationContext [main] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@15975490: startup date [Sat Nov 09 01:03:51 CET 2019]; root of context hierarchy
+2019-11-09 01:04:24,130 INFO org.springframework.context.support.AbstractApplicationContext [main] Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@15975490: startup date [Sat Nov 09 01:03:51 CET 2019]; root of context hierarchy

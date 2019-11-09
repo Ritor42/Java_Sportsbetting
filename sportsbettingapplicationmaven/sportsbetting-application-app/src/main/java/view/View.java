@@ -1,13 +1,15 @@
 package view;
 
+import com.sun.org.apache.xml.internal.utils.res.XResourceBundle;
 import domain.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class View implements IView {
-
+	private ResourceBundle bundle = ResourceBundle.getBundle("ApplicationMessages_hu_HU");
 	private Scanner scan = new Scanner(System.in);
 
 	public View() {
@@ -23,11 +25,11 @@ public class View implements IView {
 	public Player readPlayerData() {
 		Player player = new Player();
 
-		player.setName(readNotEmptyString("What is your name?"));
-		player.setBalance(readGreaterOrEqualBigDecimal(BigDecimal.ZERO, "How much money do you have?"));
+		player.setName(readNotEmptyString(bundle.getString("QName")));
+		player.setBalance(readGreaterOrEqualBigDecimal(BigDecimal.ZERO, bundle.getString("QMoney")));
 
 		Currency curr = null;
-		while ((curr = Currency.lookup(readNotEmptyString("What is your currency? (HUF, EUR or USD)"))) == null) {
+		while ((curr = Currency.lookup(readNotEmptyString(bundle.getString("QCurrency")))) == null) {
 		}
 
 		player.setCurrency(curr);
@@ -73,12 +75,12 @@ public class View implements IView {
 
 	@Override
 	public BigDecimal readWagerAmount() {
-		return readGreaterBigDecimal(BigDecimal.ZERO, "What amount do you wish to bet on it?");
+		return readGreaterBigDecimal(BigDecimal.ZERO, bundle.getString("QAmount"));
 	}
 
 	@Override
 	public OutcomeOdd selectOutcomeOdd(List<SportEvent> events) {
-		System.out.println("What are you want to bet on? (choose a number or press q for quit)");
+		System.out.println(bundle.getString("QBet"));
 		this.printOutcomeOdds(events);
 
 		try {
@@ -112,22 +114,22 @@ public class View implements IView {
 
 	@Override
 	public void printBalance(Player player) {
-		System.out.println("Your balance is " + player.getBalance() + " " + player.getCurrency() + ".");
+		System.out.println(bundle.getString("Balance") + " " + player.getBalance() + " " + player.getCurrency() + ".");
 	}
 
 	@Override
 	public void printWagerSaved(Wager wager) {
-		System.out.println("Wager saved!");
+		System.out.println(bundle.getString("WagerSaved"));
 	}
 
 	@Override
 	public void printWelcomeMessage(Player player) {
-		System.out.println("Welcome " + player.getName() + "!");
+		System.out.println(bundle.getString("Welcome") + " " + player.getName() + "!");
 	}
 
 	@Override
 	public void printNotEnoughBalance(Player player) {
-		System.out.println("You don't have enough money for this transaction!");
+		System.out.println(bundle.getString("EMoney"));
 	}
 
 	@Override
@@ -137,9 +139,9 @@ public class View implements IView {
 			for (Bet bet : event.getBets()) {
 				for (Outcome outcome : bet.getOutcomes()) {
 					for (OutcomeOdd odd : outcome.getOutcomeOdds()) {
-						System.out.println(i + ": Sport event: " + event.getTitle() + " (start: " + event.getStartDate()
-								+ "), Bet: " + bet.getDescription() + ", Outcome: " + outcome.getDescription()
-								+ " Actual odd: " + odd.getValue() + ", Valid between " + odd.getValidFrom() + " and "
+						System.out.println(i + ": " + bundle.getString("SportEvent") + ": " + event.getTitle() + " ("+bundle.getString("Start")+": " + event.getStartDate()
+								+ "), "+bundle.getString("Bet")+": " + bet.getDescription() + ", "+bundle.getString("Outcome")+": " + outcome.getDescription()
+								+ " "+bundle.getString("ActualOdd")+": " + odd.getValue() + ", "+bundle.getString("ValidBetween")+" " + odd.getValidFrom() + " "+bundle.getString("And")+" "
 								+ odd.getValidUntil());
 						i++;
 					}
@@ -150,13 +152,13 @@ public class View implements IView {
 
 	@Override
 	public void printResults(Player player, List<Wager> wagers) {
-		System.out.println("Results:");
+		System.out.println(bundle.getString("Results")+":");
 		for (Wager wager : wagers) {
 			OutcomeOdd odd = wager.getOutcomeOdd();
 			Outcome outcome = odd.getOutcome();
 
-			System.out.println("Wager '" + outcome.getBet().getDescription() + "' of " + outcome.getDescription()
-					+ " [odd: " + odd.getValue() + ", amount: " + wager.getAmount() + "], win: " + wager.isWin());
+			System.out.println(bundle.getString("Wager")+"'" + outcome.getBet().getDescription() + "' "+bundle.getString("Of")+" " + outcome.getDescription()
+					+ " ["+bundle.getString("Odd")+": " + odd.getValue() + ", "+bundle.getString("Amount")+": " + wager.getAmount() + "], "+bundle.getString("Win")+": " + wager.isWin());
 		}
 	}
 }
