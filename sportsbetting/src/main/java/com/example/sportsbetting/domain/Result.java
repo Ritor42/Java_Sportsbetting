@@ -18,7 +18,7 @@ public class Result {
     }
 
     public void addWinnerOutcome(Outcome outcome) {
-        if (!this.winnerOutcomes.contains(outcome)) {
+        if (this.winnerOutcomes.stream().filter(x -> x.equals(outcome)).count() == 0) {
             this.winnerOutcomes.add(outcome);
         }
     }

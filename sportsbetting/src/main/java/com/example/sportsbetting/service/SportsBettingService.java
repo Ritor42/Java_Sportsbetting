@@ -8,6 +8,7 @@ import com.example.sportsbetting.exception.NotEnoughBalanceException;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class SportsBettingService implements ISportsBettingService {
     private static Random rand = new Random();
@@ -120,25 +121,29 @@ public class SportsBettingService implements ISportsBettingService {
     @Override
     public void calculateResults() throws CurrencyMismatchException {
         for (SportEvent event : dbService.getEvents()) {
-            Result result = new Result();
 
-            for (Wager wager : dbService.getWagers()) {
-                if (rand.nextBoolean() && !wager.isProcessed()) {
-                    OutcomeOdd odd = wager.getOutcomeOdd();
-                    result.addWinnerOutcome(odd.getOutcome());
+            Result result = (event.getResult() == null) ? new Result() : event.getResult();
+            List<Wager> wagers = dbService.getWagers().stream().filter(x -> x.getOutcomeOdd().getOutcome().getBet().getEvent().equals(event)).collect(Collectors.toList());
 
-                    Player player = wager.getPlayer();
-                    wager.setWin(true);
+            for (Wager wager : wagers) {
+                if (!wager.isProcessed()) {
+                    if (rand.nextBoolean()) {
+                        OutcomeOdd odd = wager.getOutcomeOdd();
+                        result.addWinnerOutcome(odd.getOutcome());
 
-                    if (wager.getCurrency() == player.getCurrency()) {
-                        player.setBalance(player.getBalance().add(wager.getAmount().multiply(odd.getValue())));
-                        dbService.Save(player);
-                    } else {
-                        throw new CurrencyMismatchException();
+                        Player player = wager.getPlayer();
+                        wager.setWin(true);
+
+                        if (wager.getCurrency().equals(player.getCurrency())) {
+                            player.setBalance(player.getBalance().add(wager.getAmount().multiply(odd.getValue())));
+                            dbService.Save(player);
+                        } else {
+                            throw new CurrencyMismatchException();
+                        }
                     }
+                    wager.setProcessed(true);
+                    dbService.Save(wager);
                 }
-                wager.setProcessed(true);
-                dbService.Save(wager);
             }
 
             event.setResult(result);
