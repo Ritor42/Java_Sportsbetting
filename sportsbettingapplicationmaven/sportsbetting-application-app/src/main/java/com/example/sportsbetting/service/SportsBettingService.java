@@ -42,7 +42,7 @@ public class SportsBettingService implements ISportsBettingService {
     @Override
     public void saveWager(Wager wager) throws NotEnoughBalanceException {
 
-        if (wager != null && wager.getPlayer() != null) {
+        if (wager != null && wager.getPlayer() != null && wager.getAmount().doubleValue() > 0) {
             Player player = wager.getPlayer();
 
             if (player.getBalance().compareTo(wager.getAmount()) != -1) {

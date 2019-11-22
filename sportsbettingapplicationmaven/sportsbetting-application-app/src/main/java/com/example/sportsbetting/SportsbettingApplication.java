@@ -2,6 +2,8 @@ package com.example.sportsbetting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,9 +21,14 @@ import java.util.Locale;
 @Configuration
 @SpringBootApplication
 @ComponentScan("com.example.sportsbetting.controller")
-public class SportsbettingApplication {
+public class SportsbettingApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(SportsbettingApplication.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(SportsbettingApplication.class);
     }
 
     @Bean(name = "messageSource")
