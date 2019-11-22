@@ -1243,3 +1243,58 @@
 2019-11-22 00:57:28,537 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
 2019-11-22 00:57:28,552 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
 2019-11-22 00:57:28,653 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-11-22 01:03:24,815 INFO org.springframework.boot.StartupInfoLogger [main] Starting SportsbettingApplication on Bence-PC with PID 2036 (D:\Projektek\FinalJ2EE\sportsbettingapplicationmaven\sportsbetting-application-app\target\classes started by Bence in D:\Projektek\FinalJ2EE\sportsbettingapplicationmaven)
+2019-11-22 01:03:24,818 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-11-22 01:03:24,819 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-22 01:03:25,543 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 01:03:25,576 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 25ms. Found 0 repository interfaces.
+2019-11-22 01:03:25,821 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-22 01:03:26,065 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2019-11-22 01:03:26,075 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-22 01:03:26,076 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2019-11-22 01:03:26,076 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-22 01:03:26,328 INFO org.apache.juli.logging.DirectJDKLog [main] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-11-22 01:03:26,332 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2019-11-22 01:03:26,332 DEBUG org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-11-22 01:03:26,332 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1430 ms
+2019-11-22 01:03:26,440 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-11-22 01:03:26,540 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-11-22 01:03:26,579 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2019-11-22 01:03:26,681 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.4.8.Final}
+2019-11-22 01:03:26,787 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-22 01:03:26,882 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-11-22 01:03:27,541 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-22 01:03:27,548 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 01:03:27,563 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 01:03:27,568 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 4ms. Found 0 repository interfaces.
+2019-11-22 01:03:27,592 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2019-11-22 01:03:27,628 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 01:03:28,201 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-22 01:03:28,202 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 01:03:28,352 INFO com.example.sportsbetting.service.DbService [main] Saved entity: com.example.sportsbetting.domain.SportEvent@52f8a6f4
+2019-11-22 01:03:28,373 INFO com.example.sportsbetting.service.DbService [main] Saved entity: com.example.sportsbetting.domain.SportEvent@3cc9632d
+2019-11-22 01:03:28,422 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-11-22 01:03:28,537 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-22 01:03:28,548 DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2019-11-22 01:03:28,598 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMethodMapping [main] 16 mappings in 'requestMappingHandlerMapping'
+2019-11-22 01:03:28,624 DEBUG org.springframework.web.servlet.handler.SimpleUrlHandlerMapping [main] Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2019-11-22 01:03:28,633 DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [main] ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2019-11-22 01:03:28,727 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2019-11-22 01:03:28,752 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-22 01:03:28,753 INFO org.springframework.boot.StartupInfoLogger [main] Started SportsbettingApplication in 4.317 seconds (JVM running for 5.607)
+2019-11-22 01:03:33,492 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-22 01:03:33,492 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2019-11-22 01:03:33,492 DEBUG org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Detected StandardServletMultipartResolver
+2019-11-22 01:03:33,492 DEBUG org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-1] Detected CookieLocaleResolver
+2019-11-22 01:03:33,497 DEBUG org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2019-11-22 01:03:33,498 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 6 ms
+2019-11-22 01:03:33,508 DEBUG org.springframework.core.log.LogFormatUtils [http-nio-8080-exec-1] GET "/login", parameters={}
+2019-11-22 01:03:33,511 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMapping [http-nio-8080-exec-1] Mapped to com.example.sportsbetting.controller.HomeController#getLogin(HttpSession)
+2019-11-22 01:03:33,536 DEBUG org.springframework.web.servlet.view.ContentNegotiatingViewResolver [http-nio-8080-exec-1] Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2019-11-22 01:03:33,536 DEBUG org.springframework.web.servlet.view.AbstractView [http-nio-8080-exec-1] View name 'login', model {}
+2019-11-22 01:03:33,538 DEBUG org.springframework.web.servlet.view.InternalResourceView [http-nio-8080-exec-1] Forwarding to [/WEB-INF/view/login.jsp]
+2019-11-22 01:03:33,542 DEBUG org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed 404 NOT_FOUND
+2019-11-22 01:03:33,544 DEBUG org.springframework.core.log.LogFormatUtils [http-nio-8080-exec-1] "ERROR" dispatch for GET "/error", parameters={}
+2019-11-22 01:03:33,545 DEBUG org.springframework.web.servlet.handler.AbstractHandlerMapping [http-nio-8080-exec-1] Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2019-11-22 01:03:33,553 DEBUG org.springframework.web.servlet.view.ContentNegotiatingViewResolver [http-nio-8080-exec-1] Selected 'text/html' given [text/html, text/html;q=0.8]
+2019-11-22 01:03:33,558 DEBUG org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Exiting from "ERROR" dispatch, status 404
