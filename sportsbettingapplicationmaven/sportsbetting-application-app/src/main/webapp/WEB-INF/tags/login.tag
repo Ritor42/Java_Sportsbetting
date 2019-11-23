@@ -1,5 +1,6 @@
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@tag description="Login template" pageEncoding="UTF-8" %>
-<form action="login" method="post" class="w-25 rounded-lg border border-primary">
+<form action="<c:url value='/login' />" method="post" class="w-25 rounded-lg border border-primary">
     <div class="text-light bg-primary p-2">
         <h4>Login</h4>
     </div>

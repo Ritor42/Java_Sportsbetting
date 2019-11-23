@@ -12,22 +12,21 @@ public class Bet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty
-    private String description;
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private BetType type;
 
     @ManyToOne
     @NotNull
     private SportEvent event;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private BetType type;
+    @NotEmpty
+    private String description;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Outcome> outcomes = new ArrayList<>();
 
     public Bet() {
-
     }
 
     public Bet(String description, BetType type, List<Outcome> outcomes) {
@@ -61,6 +60,10 @@ public class Bet {
 
     public void setType(BetType type) {
         this.type = type;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public List<Outcome> getOutcomes() {

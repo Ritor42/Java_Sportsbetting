@@ -1,5 +1,6 @@
-package com.example.sportsbetting.domain;
+package com.example.sportsbetting.model;
 
+import com.example.sportsbetting.domain.Currency;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -9,22 +10,38 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
-public class Player extends User {
-    @NotEmpty
+public class RegisterRequest {
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    @NotNull
     private Currency currency;
+    private String accountNumber;
+    private BigDecimal balance;
+    private String email;
+    private String password;
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
 
-    private String accountNumber;
-    private BigDecimal balance;
+    public Boolean validate() {
+        return name != null && currency != null && birth != null &&
+                accountNumber != null && balance != null && email != null && password != null;
+    }
 
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public String getName() {
         return this.name;
     }

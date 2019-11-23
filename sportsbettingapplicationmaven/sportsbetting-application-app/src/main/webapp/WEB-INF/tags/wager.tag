@@ -1,16 +1,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ tag import="com.example.sportsbetting.domain.*" %>
-<%@ tag import="com.example.sportsbetting.service.SportsBettingService" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ tag import="com.example.sportsbetting.dto.BetDto" %>
+<%@ tag import="com.example.sportsbetting.dto.OutcomeDto" %>
+<%@ tag import="com.example.sportsbetting.dto.OutcomeOddDto" %>
+<%@ tag import="com.example.sportsbetting.dto.SportEventDto" %>
 <%@ tag import="java.text.DateFormat" %>
-<%@ tag import="java.util.List" %>
 <%@tag description="Login template" pageEncoding="UTF-8" %>
 <%
-    Integer playerId = (Integer) session.getAttribute("Id");
-    Player player = SportsBettingService.GetInstance().findPlayer(playerId);
-    List<OutcomeOdd> odds = SportsBettingService.GetInstance().findAllOutcomeOdds();
+    Iterable<OutcomeOddDto> odds = (Iterable<OutcomeOddDto>) request.getAttribute("odds");
     DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 %>
-<form action="/user/wager" method="post" class="rounded-lg border border-primary">
+<form action="<c:url value='/user/wager' />" method="post" class="rounded-lg border border-primary">
     <div class="text-light bg-primary p-2">
         <h6><spring:message code="Label.Wager"/></h6>
     </div>
@@ -19,11 +19,11 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="event-label"><spring:message code="Label.EventTitle"/></span>
             </div>
-            <select class="custom-select custom-select" name="odd" aria-describedby="event-label">
-                <% for (OutcomeOdd odd : odds) {
-                    Outcome outcome = odd.getOutcome();
-                    Bet bet = outcome.getBet();
-                    SportEvent event = bet.getEvent();
+            <select class="custom-select custom-select" name="oddId" aria-describedby="event-label">
+                <% for (OutcomeOddDto odd : odds) {
+                    OutcomeDto outcome = odd.getOutcome();
+                    BetDto bet = outcome.getBet();
+                    SportEventDto event = bet.getEvent();
                 %>
                 <option value="<%=odd.getId()%>"><%=event.getTitle()%> (<%=formatter.format(event.getStartDate())%>
                     ) <%=bet.getDescription()%> <%=outcome.getDescription()%> Odds 1:<%=odd.getValue()%>

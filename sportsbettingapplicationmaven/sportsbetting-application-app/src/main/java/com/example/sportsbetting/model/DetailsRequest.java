@@ -1,29 +1,26 @@
-package com.example.sportsbetting.domain;
+package com.example.sportsbetting.model;
 
+import com.example.sportsbetting.domain.Currency;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
-public class Player extends User {
-    @NotEmpty
+public class DetailsRequest {
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    @NotNull
     private Currency currency;
+    private String accountNumber;
+    private BigDecimal balance;
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
 
-    private String accountNumber;
-    private BigDecimal balance;
+    public Boolean validate() {
+        return name != null && currency != null && birth != null && accountNumber != null && balance != null;
+    }
 
     public String getName() {
         return this.name;

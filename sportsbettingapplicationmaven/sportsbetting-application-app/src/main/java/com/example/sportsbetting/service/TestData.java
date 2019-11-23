@@ -6,15 +6,19 @@ import com.example.sportsbetting.builder.OutcomeOddBuilder;
 import com.example.sportsbetting.builder.SportEventBuilder;
 import com.example.sportsbetting.domain.BetType;
 import com.example.sportsbetting.domain.SportEvent;
-import com.example.sportsbetting.domain.SportEventType;
 import com.example.sportsbetting.exception.TimeOverlapException;
+import com.example.sportsbetting.repository.SportEventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class TestData {
 
-    public static void Generate() {
+    @Autowired
+    private SportEventRepository eventRepository;
+
+    public void Generate() {
         BetBuilder betBuilder = new BetBuilder();
         OutcomeBuilder outcomeBuilder = new OutcomeBuilder();
         OutcomeOddBuilder oddBuilder = new OutcomeOddBuilder();
@@ -24,7 +28,7 @@ public class TestData {
 
         try {
             SportEvent event = eventBuilder.setTitle("MTK-FTC")
-                    .setType(SportEventType.Tennis)
+                    .setType(false)
                     .setStartDate(today)
                     .setEndDate(new Date(today.getTime() + 2 * 3600 * 1000))
                     .addBet(betBuilder.setDescription("Winner").setType(BetType.Winner)
@@ -63,7 +67,7 @@ public class TestData {
                             .getBet())
                     .getEvent();
 
-            DbService.GetInstance().Save(event);
+            eventRepository.save(event);
 
         } catch (TimeOverlapException e) {
             // TODO Auto-generated catch block

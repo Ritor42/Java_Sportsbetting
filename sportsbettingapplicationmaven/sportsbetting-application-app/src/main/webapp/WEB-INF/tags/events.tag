@@ -1,15 +1,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ tag import="com.example.sportsbetting.domain.Bet" %>
-<%@ tag import="com.example.sportsbetting.domain.Outcome" %>
-<%@ tag import="com.example.sportsbetting.domain.OutcomeOdd" %>
-<%@ tag import="com.example.sportsbetting.domain.SportEvent" %>
-<%@ tag import="com.example.sportsbetting.service.SportsBettingService" %>
+<%@ tag import="com.example.sportsbetting.dto.BetDto" %>
+<%@ tag import="com.example.sportsbetting.dto.OutcomeDto" %>
+<%@ tag import="com.example.sportsbetting.dto.OutcomeOddDto" %>
+<%@ tag import="com.example.sportsbetting.dto.SportEventDto" %>
 <%@ tag import="java.text.DateFormat" %>
-<%@ tag import="java.util.List" %>
 <%@tag description="Login template" pageEncoding="UTF-8" %>
 <%
-    List<SportEvent> events = SportsBettingService.GetInstance().findAllSportEvents();
-
+    Iterable<SportEventDto> events = (Iterable<SportEventDto>) request.getAttribute("events");
     DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
 %>
 
@@ -31,7 +28,7 @@
         <tbody>
         <%
             Integer id = 0;
-            for (SportEvent event : events) {
+            for (SportEventDto event : events) {
         %>
 
         <tr>
@@ -40,7 +37,7 @@
             <td><a class="btn btn-primary btn-sm" data-toggle="collapse" href="#accordion-<%=id%>" role="button"
                    aria-expanded="false" aria-controls="accordion-<%=id%>"><%=event.getTitle()%>
             </a></td>
-            <td><%=event.getType()%>
+            <td><%=event.isTennisEvent() ? "Tennis" : "Football"%>
             </td>
             <td><%=formatter.format(event.getStartDate())%>
             </td>
@@ -56,7 +53,7 @@
 
 <%
     id = 0;
-    for (SportEvent event : events) {
+    for (SportEventDto event : events) {
 %>
 <div id="accordion-<%=++id%>" class="rounded-lg border border-primary collapse mt-2 mb-2">
     <div class="text-light bg-primary p-2">
@@ -64,19 +61,19 @@
         </h6>
     </div>
     <div class="container">
-        <% for (Bet bet : event.getBets()) { %>
+        <% for (BetDto bet : event.getBets()) { %>
         <div class="container">
             <div class="p-2">
                 <h6><spring:message code="Label.BetType"/>: <%=bet.getDescription()%>
                 </h6>
             </div>
-            <% for (Outcome outcome : bet.getOutcomes()) { %>
+            <% for (OutcomeDto outcome : bet.getOutcomes()) { %>
             <div class="container">
                 <div class="p-2">
                     <h6><spring:message code="Label.OutcomeValue"/>: <%=outcome.getDescription()%>
                     </h6>
 
-                    <% for (OutcomeOdd odd : outcome.getOutcomeOdds()) { %>
+                    <% for (OutcomeOddDto odd : outcome.getOutcomeOdds()) { %>
                     <div class="container">
                         <div class="p-2">
                             <spring:message code="Label.OutcomeOdd"/>: 1:<%=odd.getValue()%><br>

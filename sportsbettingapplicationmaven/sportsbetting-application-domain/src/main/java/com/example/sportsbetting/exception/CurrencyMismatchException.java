@@ -1,9 +1,6 @@
 package com.example.sportsbetting.exception;
 
 public class CurrencyMismatchException extends Exception {
-    /**
-     *
-     */
     private static final long serialVersionUID = 1595502146011106667L;
 
     public CurrencyMismatchException() {

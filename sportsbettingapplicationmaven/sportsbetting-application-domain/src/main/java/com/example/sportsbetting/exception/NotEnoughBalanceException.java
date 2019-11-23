@@ -1,9 +1,6 @@
 package com.example.sportsbetting.exception;
 
 public class NotEnoughBalanceException extends Exception {
-    /**
-     *
-     */
     private static final long serialVersionUID = 7101425943484347045L;
 
     public NotEnoughBalanceException() {

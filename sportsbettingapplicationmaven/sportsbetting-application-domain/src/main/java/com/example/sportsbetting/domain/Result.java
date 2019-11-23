@@ -13,10 +13,6 @@ public class Result {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Outcome> winnerOutcomes = new ArrayList<>();
 
-    public Result() {
-
-    }
-
     public void addWinnerOutcome(Outcome outcome) {
         if (this.winnerOutcomes.stream().filter(x -> x.equals(outcome)).count() == 0) {
             this.winnerOutcomes.add(outcome);

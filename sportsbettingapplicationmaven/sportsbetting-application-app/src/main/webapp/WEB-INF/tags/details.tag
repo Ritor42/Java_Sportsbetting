@@ -1,12 +1,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ tag import="com.example.sportsbetting.domain.Currency" %>
-<%@ tag import="com.example.sportsbetting.domain.Player" %>
-<%@ tag import="com.example.sportsbetting.service.SportsBettingService" %>
+<%@ tag import="com.example.sportsbetting.dto.PlayerDto" %>
 <%@ tag import="java.text.SimpleDateFormat" %>
 <%@tag description="Login template" pageEncoding="UTF-8" %>
 <%
-    Integer playerId = (Integer) session.getAttribute("Id");
-    Player player = SportsBettingService.GetInstance().findPlayer(playerId);
+    PlayerDto player = (PlayerDto) request.getAttribute("player");
 
     String selectedHUF = (player.getCurrency() == Currency.HUF) ? "selected" : "";
     String selectedEUR = (player.getCurrency() == Currency.EUR) ? "selected" : "";
@@ -14,7 +13,7 @@
 
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 %>
-<form action="/user/dashboard" method="post" class="rounded-lg border border-primary">
+<form action="<c:url value='/user/dashboard' />" method="post" class="rounded-lg border border-primary">
     <div class="text-light bg-primary p-2">
         <h6><spring:message code="Label.AccountDetails"/></h6>
     </div>

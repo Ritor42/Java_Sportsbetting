@@ -14,18 +14,17 @@ public class Outcome {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty
-    private String description;
-
     @ManyToOne
     @NotNull
     private Bet bet;
+
+    @NotEmpty
+    private String description;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<OutcomeOdd> outcomeOdds = new ArrayList<>();
 
     public Outcome() {
-
     }
 
     public Outcome(String description, List<OutcomeOdd> outcomeOdds) {
@@ -44,6 +43,10 @@ public class Outcome {
         this.description = description;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
     public Bet getBet() {
         return this.bet;
     }
@@ -58,7 +61,6 @@ public class Outcome {
 
     public void addOutcomeOdd(OutcomeOdd outcomeOdd) throws TimeOverlapException {
         for (OutcomeOdd odd : this.outcomeOdds) {
-
             Boolean isAfterCollision = odd.getValidFrom().compareTo(outcomeOdd.getValidFrom()) > -1
                     && odd.getValidFrom().compareTo(outcomeOdd.getValidUntil()) < 1;
 

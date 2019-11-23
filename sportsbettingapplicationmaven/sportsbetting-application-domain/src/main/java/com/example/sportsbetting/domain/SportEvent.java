@@ -8,7 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class SportEvent {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class SportEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -22,10 +23,6 @@ public class SportEvent {
     @Temporal(TemporalType.TIMESTAMP)
     private Date endDate;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private SportEventType type;
-
     @ManyToOne
     private Result result;
 
@@ -33,15 +30,13 @@ public class SportEvent {
     private List<Bet> bets = new ArrayList<>();
 
     public SportEvent() {
-
     }
 
-    public SportEvent(String title, Date startDate, Date endDate, List<Bet> bets, SportEventType type) {
+    public SportEvent(String title, Date startDate, Date endDate, List<Bet> bets) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.bets = bets;
-        this.type = type;
 
         for (Bet bet : this.bets)
             bet.setEvent(this);
@@ -77,14 +72,6 @@ public class SportEvent {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public SportEventType getType() {
-        return this.type;
-    }
-
-    public void setType(SportEventType type) {
-        this.type = type;
     }
 
     public Result getResult() {

@@ -12,6 +12,10 @@ public class OutcomeOdd {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne
+    @NotNull
+    private Outcome outcome;
+
     @Min(value = 1)
     private BigDecimal value;
 
@@ -21,12 +25,7 @@ public class OutcomeOdd {
     @Temporal(TemporalType.TIMESTAMP)
     private Date validUntil;
 
-    @ManyToOne
-    @NotNull
-    private Outcome outcome;
-
     public OutcomeOdd() {
-
     }
 
     public OutcomeOdd(BigDecimal value, Date validFrom, Date validUntil) {

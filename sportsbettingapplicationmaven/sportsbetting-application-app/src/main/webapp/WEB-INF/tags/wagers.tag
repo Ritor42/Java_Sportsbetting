@@ -1,16 +1,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ tag import="com.example.sportsbetting.domain.*" %>
-<%@ tag import="com.example.sportsbetting.service.SportsBettingService" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ tag import="com.example.sportsbetting.dto.*" %>
 <%@ tag import="java.text.DateFormat" %>
 <%@ tag import="java.util.Date" %>
-<%@ tag import="java.util.List" %>
 <%@tag description="Login template" pageEncoding="UTF-8" %>
 <%
-    Integer playerId = (Integer) session.getAttribute("Id");
-    Player player = SportsBettingService.GetInstance().findPlayer(playerId);
-
-    List<Wager> wagers = SportsBettingService.GetInstance().findAllWagers();
-
+    PlayerDto player = (PlayerDto) request.getAttribute("player");
+    Iterable<WagerDto> wagers = (Iterable<WagerDto>) request.getAttribute("wagers");
     DateFormat formatter = DateFormat.getDateTimeInstance(
             DateFormat.SHORT,
             DateFormat.SHORT);
@@ -38,20 +34,19 @@
         </thead>
         <tbody>
         <%
-            Integer id = 0;
-            for (Wager wager : wagers) {
+            int id = 0;
+            for (WagerDto wager : wagers) {
                 String win = wager.isProcessed() ? (wager.isWin() ? "Yes" : "No") : "-";
                 String processed = wager.isProcessed() ? "Yes" : "No";
-
-                OutcomeOdd odd = wager.getOutcomeOdd();
-                Outcome outcome = odd.getOutcome();
-                Bet bet = outcome.getBet();
-                SportEvent event = bet.getEvent();
+                OutcomeOddDto odd = wager.getOutcomeOdd();
+                OutcomeDto outcome = odd.getOutcome();
+                BetDto bet = outcome.getBet();
+                SportEventDto event = bet.getEvent();
         %>
         <tr>
             <td>
                 <% if (odd.getValidFrom().compareTo(new Date()) != -1 && player.getCurrency() == wager.getCurrency() && !wager.isProcessed()) { %>
-                <a href="/user/wager/delete?wagerId=<%=wager.getId()%>">
+                <a href="<c:url value='/user/wager/delete'/>?wagerId=<%=wager.getId()%>">
                     <button type="button" class="btn btn-primary btn-sm"><spring:message code="Label.Remove"/></button>
                 </a>
                 <% } %>
@@ -60,7 +55,7 @@
             </th>
             <td><%=event.getTitle()%> <%=formatter.format(event.getStartDate())%>
             </td>
-            <td><%=event.getType()%>
+            <td><%=event.isTennisEvent() ? "Tennis" : "Football"%>
             </td>
             <td><%=bet.getType()%>
             </td>

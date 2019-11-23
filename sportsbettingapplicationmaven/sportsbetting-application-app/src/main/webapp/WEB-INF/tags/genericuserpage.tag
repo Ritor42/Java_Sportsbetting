@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@tag description="Overall Page template" pageEncoding="UTF-8" %>
 <html>
 <head>
@@ -17,16 +18,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/user/dashboard"><spring:message code="Nav.Home"/></a>
+                <a class="nav-link" href="<c:url value='/user/dashboard'/>"><spring:message code="Nav.Home"/></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/user/wager"><spring:message code="Nav.AddWager"/></a>
+                <a class="nav-link" href="<c:url value='/user/wager'/>"><spring:message code="Nav.AddWager"/></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/user/events"><spring:message code="Nav.Events"/></a>
+                <a class="nav-link" href="<c:url value='/user/events'/>"><spring:message code="Nav.Events"/></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/user/calculate"><spring:message code="Nav.Calculate"/></a>
+                <a class="nav-link" href="<c:url value='/user/calculate'/>"><spring:message code="Nav.Calculate"/></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -39,7 +40,7 @@
                 </div>
             </li>
         </ul>
-        <a href="/user/logout">
+        <a href="<c:url value='/user/logout'/>">
             <button type="button" class="btn btn-dark btn-outline-light my-2 my-sm-0"><spring:message
                     code="Nav.Logout"/></button>
         </a>

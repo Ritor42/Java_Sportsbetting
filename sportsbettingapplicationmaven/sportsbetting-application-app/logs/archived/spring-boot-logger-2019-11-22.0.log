@@ -1,0 +1,304 @@
+2019-11-22 22:21:40,832 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 22:21:41,330 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 22:21:41,427 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 81ms. Found 7 repository interfaces.
+2019-11-22 22:21:41,843 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 22:21:41,995 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 22:21:41,997 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 22:21:42,244 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 22:21:42,681 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 22:21:44,286 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@152a3fda'
+2019-11-22 22:21:44,298 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:21:45,066 WARN org.springframework.context.support.AbstractApplicationContext [localhost-startStop-1] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'service'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sportsBettingService' defined in com.example.sportsbetting.config.AppConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.sportsbetting.service.SportsBettingService]: Factory method 'sportsBettingService' threw exception; nested exception is java.lang.ExceptionInInitializerError
+2019-11-22 22:21:45,067 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:21:45,067 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [localhost-startStop-1] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2019-11-22 22:21:45,150 ERROR org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Context initialization failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'service'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sportsBettingService' defined in com.example.sportsbetting.config.AppConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.sportsbetting.service.SportsBettingService]: Factory method 'sportsBettingService' threw exception; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:639)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:116)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:397)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1429)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:702)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:578)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:530)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:170)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:160)
+	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1280)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:1091)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:5176)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5460)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sportsBettingService' defined in com.example.sportsbetting.config.AppConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.sportsbetting.service.SportsBettingService]: Factory method 'sportsBettingService' threw exception; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:625)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:636)
+	... 28 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.sportsbetting.service.SportsBettingService]: Factory method 'sportsBettingService' threw exception; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:640)
+	... 41 common frames omitted
+Caused by: java.lang.ExceptionInInitializerError: null
+	at com.example.sportsbetting.config.AppConfig.sportsBettingService(AppConfig.java:51)
+	at com.example.sportsbetting.config.AppConfig$$EnhancerBySpringCGLIB$$fec70951.CGLIB$sportsBettingService$7(<generated>)
+	at com.example.sportsbetting.config.AppConfig$$EnhancerBySpringCGLIB$$fec70951$$FastClassBySpringCGLIB$$b474bc7b.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at com.example.sportsbetting.config.AppConfig$$EnhancerBySpringCGLIB$$fec70951.sportsBettingService(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 42 common frames omitted
+Caused by: java.lang.ClassCastException: ch.qos.logback.classic.Logger cannot be cast to java.util.logging.Logger
+	at com.example.sportsbetting.service.SportsBettingService.<clinit>(SportsBettingService.java:19)
+	... 53 common frames omitted
+2019-11-22 22:27:28,436 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 22:27:28,867 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 22:27:28,988 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 105ms. Found 7 repository interfaces.
+2019-11-22 22:27:29,361 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 22:27:29,479 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 22:27:29,482 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 22:27:29,730 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 22:27:30,180 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 22:27:31,730 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@59fe22e3'
+2019-11-22 22:27:31,743 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:27:32,501 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 22:27:32,998 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4558 ms
+2019-11-22 22:27:48,531 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-5] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 22:28:45,566 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-3] Wager saved for player:hghj
+2019-11-22 22:29:19,559 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 22:29:20,004 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 22:29:20,106 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 87ms. Found 7 repository interfaces.
+2019-11-22 22:29:20,520 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 22:29:20,634 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 22:29:20,636 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 22:29:20,852 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 22:29:21,272 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 22:29:22,847 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@32f06913'
+2019-11-22 22:29:22,859 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:29:23,621 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 22:29:24,137 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4575 ms
+2019-11-22 22:29:33,818 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-9] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 22:29:39,123 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-9] Wager saved for player:ser
+2019-11-22 22:29:49,946 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-7] Wager saved for player:ser
+2019-11-22 22:32:51,289 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 22:32:51,826 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 22:32:51,980 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 129ms. Found 7 repository interfaces.
+2019-11-22 22:32:52,470 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 22:32:52,597 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 22:32:52,599 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 22:32:52,845 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 22:32:53,303 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 22:32:54,956 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@5b748900'
+2019-11-22 22:32:54,975 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:32:55,822 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 22:32:56,468 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 5174 ms
+2019-11-22 22:33:00,999 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-9] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 22:33:05,637 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-9] Wager saved for player:sdf
+2019-11-22 22:34:57,386 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 22:34:57,839 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 22:34:57,939 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 84ms. Found 7 repository interfaces.
+2019-11-22 22:34:58,322 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 22:34:58,428 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 22:34:58,430 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 22:34:58,649 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 22:34:59,082 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 22:35:00,630 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@6f1cbe84'
+2019-11-22 22:35:00,641 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:35:01,389 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 22:35:01,925 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4535 ms
+2019-11-22 22:37:49,509 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 22:37:49,959 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 22:37:50,061 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 85ms. Found 7 repository interfaces.
+2019-11-22 22:37:50,471 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 22:37:50,607 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 22:37:50,610 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 22:37:50,835 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 22:37:51,265 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 22:37:52,962 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@7a40cf1c'
+2019-11-22 22:37:52,975 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:37:53,788 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 22:37:54,304 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4791 ms
+2019-11-22 22:38:14,467 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-4] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 22:38:17,757 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-5] Wager saved for player:fff
+2019-11-22 22:38:25,462 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-3] Wager saved for player:fff
+2019-11-22 22:41:18,409 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 22:41:18,871 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 22:41:18,986 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 93ms. Found 7 repository interfaces.
+2019-11-22 22:41:19,389 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 22:41:19,523 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 22:41:19,525 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 22:41:19,764 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 22:41:20,233 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 22:41:21,842 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@376e9849'
+2019-11-22 22:41:21,855 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:41:22,636 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 22:41:23,172 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4760 ms
+2019-11-22 22:41:28,010 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-9] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 22:41:32,857 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-9] Wager saved for player:345345
+2019-11-22 22:47:31,954 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 22:47:32,442 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 22:47:32,548 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 88ms. Found 7 repository interfaces.
+2019-11-22 22:47:32,958 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 22:47:33,070 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 22:47:33,072 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 22:47:33,290 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 22:47:33,741 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 22:47:35,262 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@1b73fe67'
+2019-11-22 22:47:35,274 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 22:47:36,034 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 22:47:36,590 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4632 ms
+2019-11-22 22:47:43,746 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-9] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 22:47:49,042 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-9] Wager saved for player:ert
+2019-11-22 22:48:04,134 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-7] Wager saved for player:ert
+2019-11-22 22:48:19,422 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-7] Wager saving threw NotEnoughBalanceException for player: ert
+2019-11-22 22:48:24,171 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-7] Wager saving threw IllegalArgumentException
+2019-11-22 22:48:27,926 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-7] Wager saved for player:ert
+2019-11-22 22:48:32,492 WARN com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-7] Calculate results threw CurrencyMismatchException for player: ert
+2019-11-22 23:04:47,736 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 23:04:48,194 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 23:04:48,299 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 88ms. Found 7 repository interfaces.
+2019-11-22 23:04:48,706 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 23:04:48,820 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 23:04:48,823 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 23:04:49,059 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 23:04:49,471 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 23:04:51,083 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@1dd63534'
+2019-11-22 23:04:51,095 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 23:04:51,868 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 23:04:52,412 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4672 ms
+2019-11-22 23:05:22,913 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 23:05:23,480 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 23:05:23,622 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 121ms. Found 7 repository interfaces.
+2019-11-22 23:05:24,086 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 23:05:24,212 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 23:05:24,215 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 23:05:24,458 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 23:05:24,936 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 23:05:26,637 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@1865fb4f'
+2019-11-22 23:05:26,656 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 23:05:27,550 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 23:05:28,195 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 5277 ms
+2019-11-22 23:22:07,857 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 23:22:08,289 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 23:22:08,399 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 94ms. Found 7 repository interfaces.
+2019-11-22 23:22:08,800 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 23:22:08,928 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 23:22:08,930 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 23:22:09,141 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 23:22:09,567 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 23:22:11,159 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@5499ca17'
+2019-11-22 23:22:11,170 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 23:22:11,913 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 23:22:12,445 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4584 ms
+2019-11-22 23:22:16,114 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-3] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 23:22:58,322 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 23:22:58,785 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 23:22:58,889 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 84ms. Found 7 repository interfaces.
+2019-11-22 23:22:59,281 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 23:22:59,396 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 23:22:59,398 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 23:22:59,624 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 23:23:00,043 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 23:23:01,780 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@a7a47a0'
+2019-11-22 23:23:01,793 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 23:23:02,554 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 23:23:03,062 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4737 ms
+2019-11-22 23:23:10,384 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-9] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 23:24:06,331 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 23:24:06,885 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 23:24:07,038 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 128ms. Found 7 repository interfaces.
+2019-11-22 23:24:07,532 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 23:24:07,658 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 23:24:07,660 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 23:24:07,904 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 23:24:08,380 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 23:24:10,117 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@a287d26'
+2019-11-22 23:24:10,138 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 23:24:11,047 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 23:24:11,663 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 5327 ms
+2019-11-22 23:24:30,826 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-5] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 23:26:04,546 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 23:26:05,007 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 23:26:05,106 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 82ms. Found 7 repository interfaces.
+2019-11-22 23:26:05,501 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 23:26:05,614 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 23:26:05,616 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 23:26:05,834 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 23:26:06,260 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 23:26:07,888 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@cb07e44'
+2019-11-22 23:26:07,902 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 23:26:08,696 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 23:26:09,239 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4689 ms
+2019-11-22 23:26:49,647 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-9] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 23:27:07,436 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Initializing Servlet 'dispatcher'
+2019-11-22 23:27:07,866 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-22 23:27:07,965 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [localhost-startStop-1] Finished Spring Data repository scanning in 84ms. Found 7 repository interfaces.
+2019-11-22 23:27:08,356 INFO org.hibernate.jpa.internal.util.LogHelper [localhost-startStop-1] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-22 23:27:08,474 INFO org.hibernate.Version [localhost-startStop-1] HHH000412: Hibernate Core {5.3.6.Final}
+2019-11-22 23:27:08,476 INFO org.hibernate.cfg.Environment [localhost-startStop-1] HHH000206: hibernate.properties not found
+2019-11-22 23:27:08,694 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [localhost-startStop-1] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-22 23:27:09,152 INFO org.hibernate.dialect.Dialect [localhost-startStop-1] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-22 23:27:10,738 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [localhost-startStop-1] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@374a6159'
+2019-11-22 23:27:10,751 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [localhost-startStop-1] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-22 23:27:11,531 INFO com.example.sportsbetting.service.SportsBettingService [localhost-startStop-1] SportsBettingService is initializing.
+2019-11-22 23:27:12,056 INFO org.springframework.web.servlet.FrameworkServlet [localhost-startStop-1] Completed initialization in 4617 ms
+2019-11-22 23:27:24,407 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-bio-8080-exec-9] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-22 23:27:36,506 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-9] Wager saving threw IllegalArgumentException
+2019-11-22 23:27:38,395 INFO com.example.sportsbetting.service.SportsBettingService [http-bio-8080-exec-3] Wager saved for player:áúűáúűáúűáúűóéá

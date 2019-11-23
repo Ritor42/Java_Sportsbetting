@@ -11,14 +11,6 @@ public class Wager {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private BigDecimal amount;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date timestampCreated;
-
-    private boolean processed;
-    private boolean win;
-
     @ManyToOne
     @NotNull
     private Player player;
@@ -30,9 +22,12 @@ public class Wager {
     @Enumerated(EnumType.STRING)
     private Currency currency;
 
-    public Wager() {
-
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timestampCreated;
+    
+    private BigDecimal amount;
+    private boolean processed;
+    private boolean win;
 
     public BigDecimal getAmount() {
         return this.amount;
