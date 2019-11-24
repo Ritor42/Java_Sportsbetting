@@ -40,7 +40,7 @@
                 </div>
             </li>
         </ul>
-        <a href="<c:url value='/user/logout'/>">
+        <a href="<c:url value='/logout'/>">
             <button type="button" class="btn btn-dark btn-outline-light my-2 my-sm-0"><spring:message
                     code="Nav.Logout"/></button>
         </a>

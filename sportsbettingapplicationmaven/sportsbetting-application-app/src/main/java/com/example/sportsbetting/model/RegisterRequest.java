@@ -3,10 +3,8 @@ package com.example.sportsbetting.model;
 import com.example.sportsbetting.domain.Currency;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -23,8 +21,8 @@ public class RegisterRequest {
     private Date birth;
 
     public Boolean validate() {
-        return name != null && currency != null && birth != null &&
-                accountNumber != null && balance != null && email != null && password != null;
+        return name != null && currency != null && birth != null && accountNumber != null &&
+                balance != null && email != null && password != null && balance.doubleValue() >= 0;
     }
 
     public String getEmail() {
@@ -42,6 +40,7 @@ public class RegisterRequest {
     public void setPassword(String password) {
         this.password = password;
     }
+
     public String getName() {
         return this.name;
     }

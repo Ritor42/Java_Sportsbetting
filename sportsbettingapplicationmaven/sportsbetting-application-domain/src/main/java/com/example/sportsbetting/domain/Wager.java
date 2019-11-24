@@ -24,7 +24,7 @@ public class Wager {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestampCreated;
-    
+
     private BigDecimal amount;
     private boolean processed;
     private boolean win;

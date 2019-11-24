@@ -1,13 +1,6 @@
 package com.example.sportsbetting.model;
 
-import com.example.sportsbetting.domain.Currency;
-import com.example.sportsbetting.domain.OutcomeOdd;
-import com.example.sportsbetting.domain.Player;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class WagerRequest {
     private Integer oddId;

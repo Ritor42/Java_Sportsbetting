@@ -1,6 +1,9 @@
 package com.example.sportsbetting.builder;
 
-import com.example.sportsbetting.domain.*;
+import com.example.sportsbetting.domain.Bet;
+import com.example.sportsbetting.domain.FootballSportEvent;
+import com.example.sportsbetting.domain.SportEvent;
+import com.example.sportsbetting.domain.TennisSportEvent;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,7 +18,7 @@ public class SportEventBuilder {
     private Boolean isTennisEvent;
 
     public SportEvent getEvent() {
-        if(isTennisEvent) {
+        if (isTennisEvent) {
             return new TennisSportEvent(title, startDate, endDate, bets);
         } else {
             return new FootballSportEvent(title, startDate, endDate, bets);

@@ -19,7 +19,7 @@ public class DetailsRequest {
     private Date birth;
 
     public Boolean validate() {
-        return name != null && currency != null && birth != null && accountNumber != null && balance != null;
+        return name != null && currency != null && birth != null && accountNumber != null && balance != null && balance.doubleValue() >= 0;
     }
 
     public String getName() {
