@@ -1,14 +1,15 @@
 package com.example.sportsbetting.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class WagerRequest {
+    @NotNull
     private Integer oddId;
-    private BigDecimal amount;
 
-    public Boolean validate() {
-        return oddId != null && amount != null;
-    }
+    @Min(0)
+    private BigDecimal amount;
 
     public BigDecimal getAmount() {
         return this.amount;

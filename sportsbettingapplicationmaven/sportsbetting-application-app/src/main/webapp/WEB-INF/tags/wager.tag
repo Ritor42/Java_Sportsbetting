@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ tag import="com.example.sportsbetting.dto.BetDto" %>
 <%@ tag import="com.example.sportsbetting.dto.OutcomeDto" %>
 <%@ tag import="com.example.sportsbetting.dto.OutcomeOddDto" %>
@@ -10,7 +11,7 @@
     Iterable<OutcomeOddDto> odds = (Iterable<OutcomeOddDto>) request.getAttribute("odds");
     DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 %>
-<form action="<c:url value='/user/wager' />" method="post" class="rounded-lg border border-primary">
+<form:form action="wager" cssClass="rounded-lg border border-primaryy" method="post" modelAttribute="wagerRequest">
     <div class="text-light bg-primary p-2">
         <h6><spring:message code="Label.Wager"/></h6>
     </div>
@@ -19,7 +20,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="event-label"><spring:message code="Label.EventTitle"/></span>
             </div>
-            <select class="custom-select custom-select" name="oddId" aria-describedby="event-label">
+            <form:select class="custom-select custom-select" path="oddId" aria-describedby="event-label">
                 <% for (OutcomeOddDto odd : odds) {
                     OutcomeDto outcome = odd.getOutcome();
                     BetDto bet = outcome.getBet();
@@ -31,17 +32,20 @@
                 <%
                     }
                 %>
-            </select>
+            </form:select>
         </div>
         <div class="input-group form-group">
+            <div class="input-group">
+                <form:errors path="amount" cssClass="alert alert-danger"/>
+            </div>
             <div class="input-group-prepend">
                 <span class="input-group-text" id="amount-label"><spring:message code="Label.WagerAmount"/></span>
             </div>
-            <input type="number" name="amount" class="form-control" placeholder="Amount" aria-describedby="amount-label"
-                   required>
+            <form:input type="number" path="amount" cssClass="form-control" placeholder="Amount"
+                        aria-describedby="amount-label"/>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary"><spring:message code="Label.Add"/></button>
+            <form:button type="submit" class="btn btn-primary"><spring:message code="Label.Add"/></form:button>
         </div>
     </div>
-</form>
+</form:form>

@@ -5,22 +5,32 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class DetailsRequest {
+    @NotNull
+    @Size(min = 2, max = 255)
     private String name;
+
+    @NotNull
     private Currency currency;
+
+    @NotNull
+    @Size(max = 255)
     private String accountNumber;
+
+    @NotNull
+    @Min(0)
     private BigDecimal balance;
 
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
-
-    public Boolean validate() {
-        return name != null && currency != null && birth != null && accountNumber != null && balance != null && balance.doubleValue() >= 0;
-    }
 
     public String getName() {
         return this.name;

@@ -1,19 +1,22 @@
 package com.example.sportsbetting.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
 public class LoginRequest {
-    private String email;
+    @NotNull
+    @Email
+    private String username;
+
+    @NotNull
     private String password;
 
-    public Boolean validate() {
-        return email != null && password != null && email != "" && password != "";
+    public String getUsername() {
+        return this.username;
     }
 
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

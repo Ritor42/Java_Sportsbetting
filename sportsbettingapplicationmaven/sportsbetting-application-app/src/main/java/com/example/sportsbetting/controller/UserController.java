@@ -1,5 +1,6 @@
 package com.example.sportsbetting.controller;
 
+import com.example.sportsbetting.domain.Currency;
 import com.example.sportsbetting.domain.Player;
 import com.example.sportsbetting.domain.Wager;
 import com.example.sportsbetting.dto.OutcomeOddDto;
@@ -15,9 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
@@ -34,16 +37,27 @@ public class UserController {
     public ModelAndView getDashboard(Principal principal) {
         Player player = service.findPlayer(principal.getName());
         Iterable<WagerDto> wagers = service.findAllPlayerWagerDtos(player);
+
+        DetailsRequest detailsRequest = new DetailsRequest();
+        detailsRequest.setAccountNumber(player.getAccountNumber());
+        detailsRequest.setBalance(player.getBalance());
+        detailsRequest.setBirth(player.getBirth());
+        detailsRequest.setCurrency(player.getCurrency());
+        detailsRequest.setName(player.getName());
+
         return new ModelAndView("user/dashboard")
                 .addObject("player", new PlayerDto(player))
-                .addObject("wagers", wagers);
+                .addObject("wagers", wagers)
+                .addObject("detailsRequest", detailsRequest)
+                .addObject("currencies", Currency.values());
     }
 
     @GetMapping("/user/wager")
     public ModelAndView getWager() {
         Iterable<OutcomeOddDto> odds = service.findAllOutcomeOddDtos();
         return new ModelAndView("user/wager")
-                .addObject("odds", odds);
+                .addObject("odds", odds)
+                .addObject("wagerRequest", new WagerRequest());
     }
 
     @GetMapping("/user/events")
@@ -62,39 +76,50 @@ public class UserController {
     }
 
     @PostMapping("/user/dashboard")
-    public ModelAndView saveDetails(Principal principal, DetailsRequest detailsRequest, BindingResult bindingResult) {
-        if (!bindingResult.hasErrors() && detailsRequest.validate()) {
+    public ModelAndView saveDetails(@Valid @ModelAttribute("detailsRequest") DetailsRequest detailsRequest, BindingResult bindingResult, Principal principal) {
+        Player dbPlayer = service.findPlayer(principal.getName());
+        if (!bindingResult.hasErrors()) {
             try {
-                Player dbPlayer = service.findPlayer(principal.getName());
                 dbPlayer.setName(detailsRequest.getName());
                 dbPlayer.setBirth(detailsRequest.getBirth());
                 dbPlayer.setAccountNumber(detailsRequest.getAccountNumber());
                 dbPlayer.setCurrency(detailsRequest.getCurrency());
                 dbPlayer.setBalance(detailsRequest.getBalance());
                 service.savePlayer(dbPlayer);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
+        } else {
+            Iterable<WagerDto> wagers = service.findAllPlayerWagerDtos(dbPlayer);
+
+            return new ModelAndView("user/dashboard")
+                    .addObject("player", new PlayerDto(dbPlayer))
+                    .addObject("wagers", wagers)
+                    .addObject("detailsRequest", detailsRequest)
+                    .addObject("currencies", Currency.values());
         }
-        return new ModelAndView("redirect:/user/dashboard");
+
+        return new ModelAndView("redirect:dashboard");
     }
 
     @PostMapping("/user/wager")
-    public ModelAndView addWager(Principal principal, WagerRequest wagerRequest, BindingResult bindingResult) {
-        if (bindingResult.hasErrors() || !wagerRequest.validate()) {
-            return new ModelAndView("redirect:/user/wager");
+    public ModelAndView addWager(@Valid @ModelAttribute("wagerRequest") WagerRequest wagerRequest, BindingResult bindingResult, Principal principal) {
+        if (!bindingResult.hasErrors()) {
+            try {
+                Player player = service.findPlayer(principal.getName());
+                Wager wager = new Wager();
+                wager.setPlayer(player);
+                wager.setCurrency(player.getCurrency());
+                wager.setAmount(wagerRequest.getAmount());
+                service.saveWager(wager, wagerRequest.getOddId());
+                return new ModelAndView("redirect:dashboard");
+            } catch (Exception ignored) {
+            }
         }
 
-        try {
-            Player player = service.findPlayer(principal.getName());
-            Wager wager = new Wager();
-            wager.setPlayer(player);
-            wager.setCurrency(player.getCurrency());
-            wager.setAmount(wagerRequest.getAmount());
-            service.saveWager(wager, wagerRequest.getOddId());
-            return new ModelAndView("redirect:/user/dashboard");
-        } catch (Exception e) {
-            return new ModelAndView("redirect:/user/wager");
-        }
+        Iterable<OutcomeOddDto> odds = service.findAllOutcomeOddDtos();
+        return new ModelAndView("user/wager")
+                .addObject("odds", odds)
+                .addObject("wagerRequest", wagerRequest);
     }
 
     @GetMapping(value = "/user/wager/delete")
