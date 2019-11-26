@@ -28,7 +28,9 @@ public class UserDetailsServiceImp implements UserDetailsService {
 
         if (user != null) {
             Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-            for (Role role : user.getRoles()) {
+            Role role = user.getRole();
+
+            if(role != null) {
                 grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
             }
 

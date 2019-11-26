@@ -112,11 +112,12 @@ public class SportsBettingService {
                 }
 
                 player.setPassword(passwordEncoder.encode(player.getPassword()));
-                player.addRole(userRole);
-            }
+                player.setRole(userRole);
 
-            LOG.info("Player saved: " + player.getName());
-            playerRepository.save(player);
+                LOG.info("Player saved: " + player.getName());
+                roleRepository.save(userRole);
+                playerRepository.save(player);
+            }
         } else {
             LOG.info("Player save threw IllegalArgumentException");
             throw new IllegalArgumentException();

@@ -3,6 +3,7 @@ package com.example.sportsbetting.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +19,9 @@ public abstract class User {
     @NotEmpty
     private String password;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private List<Role> roles = new ArrayList<>();
+    @NotNull
+    @ManyToOne
+    private Role role;
 
     public int getId() {
         return this.id;
@@ -41,15 +43,11 @@ public abstract class User {
         this.password = password;
     }
 
-    public List<Role> getRoles() {
-        return this.roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public void addRole(Role role) {
-        this.roles.add(role);
-    }
-
-    public void removeRole(Role role) {
-        this.roles.remove(role);
+    public Role getRole() {
+        return this.role;
     }
 }
