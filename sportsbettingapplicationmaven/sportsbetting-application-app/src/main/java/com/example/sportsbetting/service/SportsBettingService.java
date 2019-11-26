@@ -109,15 +109,14 @@ public class SportsBettingService {
                 if (userRole == null) {
                     userRole = new Role();
                     userRole.setName("User");
+                    roleRepository.save(userRole);
                 }
-
                 player.setPassword(passwordEncoder.encode(player.getPassword()));
                 player.setRole(userRole);
-
-                LOG.info("Player saved: " + player.getName());
-                roleRepository.save(userRole);
-                playerRepository.save(player);
             }
+
+            playerRepository.save(player);
+            LOG.info("Player saved: " + player.getName());
         } else {
             LOG.info("Player save threw IllegalArgumentException");
             throw new IllegalArgumentException();
