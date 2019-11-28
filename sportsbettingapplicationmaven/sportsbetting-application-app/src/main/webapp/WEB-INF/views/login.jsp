@@ -6,8 +6,7 @@
         <div class="container">
             <h3><a href="login" class="text-primary">Login</a> or <a href="register" class="text-primary">Register</a>
                 to start!</h3>
-            <t:login>
-            </t:login>
+            <jsp:include page="loginForm.jsp" />
         </div>
     </jsp:body>
 </t:genericpage>

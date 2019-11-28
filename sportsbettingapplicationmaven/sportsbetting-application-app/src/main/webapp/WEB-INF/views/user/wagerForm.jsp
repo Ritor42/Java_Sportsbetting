@@ -1,12 +1,11 @@
+<%@ page import="com.example.sportsbetting.dto.OutcomeOddDto" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="com.example.sportsbetting.dto.OutcomeDto" %>
+<%@ page import="com.example.sportsbetting.dto.BetDto" %>
+<%@ page import="com.example.sportsbetting.dto.SportEventDto" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ tag import="com.example.sportsbetting.dto.BetDto" %>
-<%@ tag import="com.example.sportsbetting.dto.OutcomeDto" %>
-<%@ tag import="com.example.sportsbetting.dto.OutcomeOddDto" %>
-<%@ tag import="com.example.sportsbetting.dto.SportEventDto" %>
-<%@ tag import="java.text.DateFormat" %>
-<%@tag description="Login template" pageEncoding="UTF-8" %>
 <%
     Iterable<OutcomeOddDto> odds = (Iterable<OutcomeOddDto>) request.getAttribute("odds");
     DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);

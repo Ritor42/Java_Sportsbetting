@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@tag description="Login template" pageEncoding="UTF-8" %>
 <form:form action="login" cssClass="w-25 rounded-lg border border-primary" method="post" modelAttribute="loginRequest">
     <div class="text-light bg-primary p-2">
         <h4>Login</h4>

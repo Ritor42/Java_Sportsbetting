@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@tag description="Login template" pageEncoding="UTF-8" %>
 <form:form action="register" cssClass="w-50 rounded-lg border border-primary" method="post"
            modelAttribute="registerRequest">
     <div class="text-light bg-primary p-2">

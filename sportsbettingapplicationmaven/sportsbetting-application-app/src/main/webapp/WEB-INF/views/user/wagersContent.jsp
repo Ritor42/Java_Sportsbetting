@@ -1,9 +1,8 @@
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="com.example.sportsbetting.dto.*" %>
+<%@ page import="java.util.Date" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
-<%@ tag import="com.example.sportsbetting.dto.*" %>
-<%@ tag import="java.text.DateFormat" %>
-<%@ tag import="java.util.Date" %>
-<%@tag description="Login template" pageEncoding="UTF-8" %>
 <%
     PlayerDto player = (PlayerDto) request.getAttribute("player");
     Iterable<WagerDto> wagers = (Iterable<WagerDto>) request.getAttribute("wagers");

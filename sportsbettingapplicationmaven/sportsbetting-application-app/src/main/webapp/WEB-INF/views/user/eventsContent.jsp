@@ -1,10 +1,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ tag import="com.example.sportsbetting.dto.BetDto" %>
-<%@ tag import="com.example.sportsbetting.dto.OutcomeDto" %>
-<%@ tag import="com.example.sportsbetting.dto.OutcomeOddDto" %>
-<%@ tag import="com.example.sportsbetting.dto.SportEventDto" %>
-<%@ tag import="java.text.DateFormat" %>
-<%@tag description="Login template" pageEncoding="UTF-8" %>
+<%@ page import="com.example.sportsbetting.dto.SportEventDto" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="com.example.sportsbetting.dto.BetDto" %>
+<%@ page import="com.example.sportsbetting.dto.OutcomeOddDto" %>
+<%@ page import="com.example.sportsbetting.dto.OutcomeDto" %>
 <%
     Iterable<SportEventDto> events = (Iterable<SportEventDto>) request.getAttribute("events");
     DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);

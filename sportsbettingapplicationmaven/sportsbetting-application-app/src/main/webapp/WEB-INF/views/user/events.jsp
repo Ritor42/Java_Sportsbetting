@@ -3,8 +3,7 @@
 <t:genericuserpage>
     <jsp:body>
         <div class="container mt-4">
-            <t:events>
-            </t:events>
+            <jsp:include page="eventsContent.jsp" />
         </div>
     </jsp:body>
 </t:genericuserpage>
