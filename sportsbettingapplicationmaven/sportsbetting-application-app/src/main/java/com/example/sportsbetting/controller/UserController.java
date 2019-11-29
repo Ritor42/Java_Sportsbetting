@@ -63,7 +63,8 @@ public class UserController {
     @GetMapping("/user/events")
     public ModelAndView getEvents() {
         Iterable<SportEventDto> events = service.findAllSportEventDtos();
-        return new ModelAndView("user/events").addObject("events", events);
+        return new ModelAndView("user/events")
+                .addObject("events", events);
     }
 
     @GetMapping("/user/calculate")
@@ -123,13 +124,11 @@ public class UserController {
     }
 
     @GetMapping(value = "/user/wager/delete")
-    public ModelAndView removeWager(Integer wagerId) {
-        if (wagerId != null) {
+    public ModelAndView removeWager(int wagerId) {
             try {
                 service.deleteWager(wagerId);
             } catch (CurrencyMismatchException | WagerProcessedException ignored) {
             }
-        }
 
         return new ModelAndView("redirect:/user/dashboard");
     }

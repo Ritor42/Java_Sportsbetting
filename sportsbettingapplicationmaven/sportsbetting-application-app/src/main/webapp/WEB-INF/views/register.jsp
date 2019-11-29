@@ -4,7 +4,7 @@
 <t:genericpage>
     <jsp:body>
         <div class="container">
-            <jsp:include page="registerForm.jsp" />
+            <jsp:include page="includes/registerForm.jsp" />
         </div>
     </jsp:body>
 </t:genericpage>

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class WagerRequest {
     @NotNull
-    private Integer oddId;
+    private int oddId;
 
     @Min(0)
     private BigDecimal amount;
@@ -19,11 +19,11 @@ public class WagerRequest {
         this.amount = amount;
     }
 
-    public Integer getOddId() {
+    public int getOddId() {
         return this.oddId;
     }
 
-    public void setOddId(Integer oddId) {
+    public void setOddId(int oddId) {
         this.oddId = oddId;
     }
 }

@@ -3,11 +3,11 @@
 <t:genericuserpage>
     <jsp:body>
         <div class="container mt-4">
-            <jsp:include page="detailsForm.jsp" />
+            <jsp:include page="../includes/user/detailsForm.jsp" />
         </div>
 
         <div class="container">
-            <jsp:include page="wagersContent.jsp" />
+            <jsp:include page="../includes/user/wagersContent.jsp" />
         </div>
     </jsp:body>
 </t:genericuserpage>
