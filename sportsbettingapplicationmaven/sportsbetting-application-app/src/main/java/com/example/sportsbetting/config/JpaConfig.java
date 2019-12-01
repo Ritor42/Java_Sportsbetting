@@ -24,7 +24,8 @@ public class JpaConfig {
     private static final String password = "j2ee";
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) throws ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
         em.setPackagesToScan("com.example.sportsbetting.domain");
